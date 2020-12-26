@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+  {% if variable %}
+    <div class="alert alert-primarey border text-center" role="alert">
+      Bought
+    </div>
+  {% endif %}
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Symbol</th>
+          <th>Name</th>
+          <th>Shares</th>
+          <th>Price</th>
+          <th>TOTAL</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!--{% for i in data %}-->
+        <!--  <td>{{i.symbol}}</td>-->
+        <!--  <td>{{i.name}}</td>-->
+        <!--  <td>{{i.shares}}</td>-->
+        <!--  <td>{{i.price}}</td>-->
+        <!--  <td>{{i.TOTAL}}</td>-->
+        <!--{% endfor %}-->
+        {% for row in data %}
+          {% if row.shares != 0 %}
+            <tr>
+                <td>{{row.symbol}}</td>
+                <td>{{row.name}}</td>
+                <td>{{row.shares}}</td>
+                <td>{{usd(row.price)}}</td>
+                <td>{{usd(row.TOTAL)}}</td>
+            </tr>
+          {% endif %}
+        {% endfor %}
+        <td>CASH</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>{{cash}}</td>
+      </tr>
+      </tbody>
+  </table>
+{% endblock %}
